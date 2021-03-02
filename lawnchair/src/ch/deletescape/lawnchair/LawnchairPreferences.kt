@@ -141,6 +141,7 @@ class LawnchairPreferences(val context: Context) : SharedPreferences.OnSharedPre
     val usePopupMenuView by BooleanPref("pref_desktopUsePopupMenuView", true, doNothing)
     var workspaceBlurScreens by IntSetPref("pref_workspaceBlurScreens", emptySet())
     var keepEmptyScreens by BooleanPref("pref_keepEmptyScreens", false)
+    var defaultPage by IntPref("dani_default_page", 0, doNothing)
 
     // Smartspace
     val enableSmartspace by BooleanPref("pref_smartspace", lawnchairConfig.enableSmartspace)

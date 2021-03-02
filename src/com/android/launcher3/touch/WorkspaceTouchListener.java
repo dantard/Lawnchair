@@ -34,12 +34,14 @@ import android.view.View.OnTouchListener;
 import android.view.ViewConfiguration;
 
 import ch.deletescape.lawnchair.LawnchairLauncher;
+import ch.deletescape.lawnchair.LawnchairPreferences;
 import ch.deletescape.lawnchair.blur.BlurWallpaperProvider;
 import ch.deletescape.lawnchair.gestures.GestureController;
 import com.android.launcher3.AbstractFloatingView;
 import com.android.launcher3.CellLayout;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Launcher;
+import com.android.launcher3.LauncherSettings;
 import com.android.launcher3.R;
 import com.android.launcher3.Workspace;
 import com.android.launcher3.dragndrop.DragLayer;
@@ -205,6 +207,15 @@ public class WorkspaceTouchListener extends GestureDetector.SimpleOnGestureListe
                     -1, v -> {
                 mLauncher.getWorkspace().removeScreen(currentScreen, true);
                         return true;
+            }));
+            options.add(new OptionItem(
+                    R.string.set_as_default_page,
+                    R.drawable.ic_default_shortcut,
+                    -1, v -> {
+//              mLauncher.getWorkspace().removeScreen(currentScreen, true);
+                LawnchairPreferences.Companion.getInstance(mLauncher).setDefaultPage(currentScreen);
+
+                return true;
             }));
             if (BlurWallpaperProvider.Companion.isEnabled()) {
                 options.add(mWorkspace.getWorkspaceBlur().getOptionItem(currentScreen));

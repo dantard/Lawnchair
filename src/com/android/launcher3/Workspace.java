@@ -3361,7 +3361,7 @@ public class Workspace extends PagedView<WorkspacePageIndicator>
     }
 
     void moveToDefaultScreen() {
-        int page = DEFAULT_PAGE;
+        int page = LawnchairPreferences.Companion.getInstance(mLauncher).getDefaultPage();;//DEFAULT_PAGE;DANILO
         if (!workspaceInModalState() && getNextPage() != page) {
             snapToPage(page);
         }
